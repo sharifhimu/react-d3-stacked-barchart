@@ -84,12 +84,12 @@ const Form_comp = () => {
 
                 <label className='label' >
                     <span className='span' >Your phone number </span>
-                    <input className='input' type="number" name="phone" onChange={(e) => setPhone(e.target.value) }  value={phone}  />
+                    <input className='input phone_no' type="number" name="phone" onChange={(e) => setPhone(e.target.value) }  value={phone}  />
                 </label>
 
                 <div className='terms' >
                     <label className='container' >
-                        <span className='span' > I read & agree your terms & conditions </span>
+                        <span className='span' > I read and agree terms and conditions </span>
                         <input className='input' type="checkbox" name="terms"  onChange={(e) => setTerms(e.target.checked) } />
                         <span className='checkmark' ></span>
                     </label>

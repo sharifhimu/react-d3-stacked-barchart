@@ -31,9 +31,9 @@ const Dashboard = () => {
       const allKeys = ['one', 'two', 'three' ];
       
       const colors = {
-        one: "cadetblue",
-        two: "#2196F3",
-        three: "purple"
+        one: "#F76E11",
+        two: "#FF9F45",
+        three: "#FFBC80"
       };
 
     return (
@@ -44,20 +44,20 @@ const Dashboard = () => {
                     <thead className='thead' >  
                         <tr className='tr' >
                             <td className='td' > Year </td>
-                            <td className='td' > One (Green) </td>
-                            <td className='td' > Two (Blue) </td>
-                            <td className='td' > Three (Purple) </td>
+                            <td className='td one' > One  </td>
+                            <td className='td two' > Two  </td>
+                            <td className='td three' > Three  </td>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className='tbody' >
                         {
                             data.map((x,i) => {
                                 return(
                                     <tr key={i} className='tr' >
                                         <td className='td' > {x.year} </td>
-                                        <td className='td' > {x.one} </td>
-                                        <td className='td' > {x.two} </td>
-                                        <td className='td' > {x.three} </td>
+                                        <td className='td one' > {x.one} </td>
+                                        <td className='td two' > {x.two} </td>
+                                        <td className='td three' > {x.three} </td>
                                     </tr>
                                 )
                             })

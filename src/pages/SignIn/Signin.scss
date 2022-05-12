@@ -7,8 +7,9 @@
 
     .h5{
         color: rgba(0,0,0,.8);
-        font-size: 15px;
+        font-size: 18px;
         margin-bottom: 15px;
+        margin-top: 0;
     }
 
     .p{
@@ -22,6 +23,7 @@
     .image_bg{
         background-color: #f7f7f7;
         height: 100%;
+        width: 50%;
         
         .signin_img_wrapper{
             display: flex;
@@ -43,28 +45,34 @@
         .form_comp{
             margin-left: 4rem;
 
+            .h5{
+                margin-bottom: 40px;
+            }
+
             .label{
                 display: grid;
-                width: 18em;
+                width: 25em;
                 margin-bottom: 10px;
 
                 .span{
                     margin-bottom: 5px;
-                    color: #9f9b9b;
+                    color: #465c64;
                     font-weight: 500;
-                    font-size: 15px;
+                    font-size: 12px;
                 }
                 .input{
                     height: 25px;
                     border: 1px solid #e6e4e4 ;
-                    
+                }
+                .phone_no{
+                    width: 12.5em;
                 }
             }
 
             .terms{
                 .container{
 
-                    display: block;
+                    display: flex;
                     position: relative;
                     padding-left: 35px;
                     margin-bottom: 12px;
@@ -77,8 +85,9 @@
     
                     .span:first-child{
                         color: rgba(0,0,0,.9);
-                        font-size: 15px;
+                        font-size: 12px;
                         font-weight: 600;
+                        margin-top: 3px;
                     }
 
                     .input{
@@ -92,16 +101,16 @@
                         position: absolute;
                         top: 0;
                         left: 0;
-                        height: 25px;
-                        width: 25px;
+                        height: 20px;
+                        width: 20px;
                         background-color: #eee;
-                        border-radius: 2rem;
+                        border-radius: .2rem;
                       }
     
                       .input:checked ~ .checkmark {
                         background-color: white;
-                        border: 1px solid #2196F3;
-                        color: #2196F3;
+                        border: 1px solid #33adff;
+                        color: #33adff;
                       }
                       .checkmark:after {
                         content: "";
@@ -112,11 +121,11 @@
                         display: block;
                       }
                       .checkmark:after {
-                        left: 9px;
-                        top: 5px;
-                        width: 5px;
-                        height: 10px;
-                        border: solid #2196F3;
+                        left: 8px;
+                        top: 3px;
+                        width: 3px;
+                        height: 8px;
+                        border: solid #33adff;
                         border-width: 0 3px 3px 0;
                         -webkit-transform: rotate(45deg);
                         -ms-transform: rotate(45deg);
@@ -127,14 +136,14 @@
             }
 
             .button{
-                background-color: #2196F3;
+                background-color: #33adff;
                 color: white;
                 font-weight: bold;
-                width: 10em;
-                height: 2em;
+                width: 12em;
+                height: 2.2em;
                 border: none;
                 border-radius: 2px;
-                margin-top: 10px;
+                margin-top: 15px;
                 cursor: pointer;
             }
         }
