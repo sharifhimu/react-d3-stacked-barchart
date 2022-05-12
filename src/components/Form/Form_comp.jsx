@@ -50,7 +50,7 @@ const Form_comp = () => {
             alert('Please make sure to check out terms & conditions')
         }
 
-        if( mailmatch != null && passmatch != null && name != null && phonematch.length >= 10 && terms == true ){
+        if( mailmatch != null && passmatch != null && name != null && phonematch.length >= 10 && pass == confirm && terms == true ){
             console.log('good to go');
             navigate('/dashboard')
 
