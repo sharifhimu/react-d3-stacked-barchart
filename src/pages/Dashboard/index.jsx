@@ -12,14 +12,16 @@ const Dashboard = () => {
     
     useEffect(() => {
         let arr = []
+        let check = []
         for(let i=0; i<5; i++){
             let obj = {}
             obj.year = randomDate(new Date(2001, 0, 1), new Date())
             obj.one =  Math.floor( Math.random()*100 )
             obj.two =  Math.floor( Math.random()*100 )
             obj.three =  Math.floor( Math.random()*100 )
-            console.log('obj ', obj );
-            arr.push(obj)
+            // console.log('obj ', obj );
+            check = arr.filter(x => x.year === obj.year )
+            if(check.length < 1 ) arr.push(obj)
         }
         setData(arr)
 
