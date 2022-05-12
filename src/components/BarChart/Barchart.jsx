@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import {
+import React, { useEffect, useRef, useState } from "react";
+import  {
   select,
   scaleBand,
   axisBottom,
@@ -7,11 +7,14 @@ import {
   max,
   scaleLinear,
   axisLeft,
-  stackOrderAscending
+  stackOrderAscending,
+  html,
+  event
 } from "d3";
 import useResizeObserver from "../useResizeObserver";
 
 const Barchart = ({ data, keys, colors }) => {
+    const [view, setView ] = useState({ 'One(green)': 0, 'Two(blue)': 0, 'Three(purple)': 0 })
     const svgRef = useRef();
     const wrapperRef = useRef();
     const dimensions = useResizeObserver(wrapperRef);
@@ -42,7 +45,28 @@ const Barchart = ({ data, keys, colors }) => {
         .domain(extent)
         .range([height, 0]);
 
+        // axes
+        const xAxis = axisBottom(xScale);
+        svg
+        .select(".x-axis")
+        .attr("transform", `translate(0, ${height})`)
+        .call(xAxis);
+
+        const yAxis = axisLeft(yScale);
+        svg.select(".y-axis").call(yAxis);
+
         // rendering
+
+        const div = select("body").append("div")
+            .attr("class", "tooltip-donut")
+            .style("opacity", 0);
+
+        select('svg')
+        .style('background-image', 'linear-gradient(to top, rgb(199,199,199), rgb(216, 216, 216) )')
+
+        select('x-axis')
+        .style('color', 'white')
+
         svg
         .selectAll(".layer")
         .data(layers)
@@ -56,22 +80,55 @@ const Barchart = ({ data, keys, colors }) => {
         .attr("x", sequence => xScale(sequence.data.year))
         .attr("width", xScale.bandwidth())
         .attr("y", sequence => yScale(sequence[1]))
-        .attr("height", sequence => yScale(sequence[0]) - yScale(sequence[1]));
+        .attr("height", sequence => yScale(sequence[0]) - yScale(sequence[1]))
+        .on('mouseover', function (d, i) {
+            select(this).transition()
+                 .duration('50')
+                 .attr('opacity', '.8') 
+                //  .attr("fill", 'red' )
+            div.transition()
+                .duration(50)
+                .style("opacity", 1)
+                console.log('d ', d, 'i ', i );
+            setView( i.data )
+            // div.html(`${i.data.year}`)
+            //     .style("left", (d.pageX + 10) + "px")
+            //     .style("top", (d.pageY - 15) + "px");
+        })
+        .on('mouseout', function (d, i) {
+            select(this).transition()
+                    .duration('50')
+                    .attr('opacity', '1') 
+                    .attr("fill", layer => colors[layer.key] )
+            div.transition()
+                    .duration('50')
+                    .style("opacity", 0);
+            setView({})
+                    
+        })
 
-        // axes
-        const xAxis = axisBottom(xScale);
-        svg
-        .select(".x-axis")
-        .attr("transform", `translate(0, ${height})`)
-        .call(xAxis);
 
-        const yAxis = axisLeft(yScale);
-        svg.select(".y-axis").call(yAxis);
+        
     }, [colors, data, dimensions, keys]);
 
     return (
         <React.Fragment>
         <div ref={wrapperRef} className="barchart" >
+            <div className="card-wrapper" >
+                {
+                    view.one != null ? 
+                    <>
+                        <p className="p" > 
+                            <span className="span one" > One: { view.one } </span> 
+                            <span className="span two" > Two: {view.two} </span>  
+                            <span className="span three" > Three: {view.three} </span> 
+                        </p>
+                    
+                    </>
+                    :
+                    null
+                }
+            </div>
             <svg ref={svgRef} className='svg' >
             <g className="x-axis" />
             <g className="y-axis" />

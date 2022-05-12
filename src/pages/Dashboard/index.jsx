@@ -41,10 +41,10 @@ const Dashboard = () => {
                 <table className='table' >
                     <thead className='thead' >  
                         <tr className='tr' >
-                            <td> Year </td>
-                            <td> One (Green) </td>
-                            <td> Two (Blue) </td>
-                            <td> Three (Purple) </td>
+                            <td className='td' > Year </td>
+                            <td className='td' > One (Green) </td>
+                            <td className='td' > Two (Blue) </td>
+                            <td className='td' > Three (Purple) </td>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,10 +52,10 @@ const Dashboard = () => {
                             data.map((x,i) => {
                                 return(
                                     <tr key={i} className='tr' >
-                                        <td> {x.year} </td>
-                                        <td> {x.one} </td>
-                                        <td> {x.two} </td>
-                                        <td> {x.three} </td>
+                                        <td className='td' > {x.year} </td>
+                                        <td className='td' > {x.one} </td>
+                                        <td className='td' > {x.two} </td>
+                                        <td className='td' > {x.three} </td>
                                     </tr>
                                 )
                             })
