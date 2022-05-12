@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Stacked Bar chart made in React & D3.js
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+live url : https://react-d3-barchart.netlify.com
 
 ## Available Scripts
 
