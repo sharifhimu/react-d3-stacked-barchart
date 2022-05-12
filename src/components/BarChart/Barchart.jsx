@@ -57,12 +57,9 @@ const Barchart = ({ data, keys, colors }) => {
 
         // rendering
 
-        const div = select("body").append("div")
-            .attr("class", "tooltip-donut")
-            .style("opacity", 0);
-
         select('svg')
-        .style('background-image', 'linear-gradient(to top, rgb(199,199,199), rgb(216, 216, 216) )')
+        // .style('background-image', 'linear-gradient(to top, rgb(199,199,199), rgb(216, 216, 216) )')
+        .style("background", 'transparent')
 
         select('x-axis')
         .style('color', 'white')
@@ -85,29 +82,17 @@ const Barchart = ({ data, keys, colors }) => {
             select(this).transition()
                  .duration('50')
                  .attr('opacity', '.8') 
-                //  .attr("fill", 'red' )
-            div.transition()
-                .duration(50)
-                .style("opacity", 1)
-                console.log('d ', d, 'i ', i );
+                // console.log('d ', d, 'i ', i );
             setView( i.data )
-            // div.html(`${i.data.year}`)
-            //     .style("left", (d.pageX + 10) + "px")
-            //     .style("top", (d.pageY - 15) + "px");
         })
         .on('mouseout', function (d, i) {
             select(this).transition()
                     .duration('50')
                     .attr('opacity', '1') 
                     .attr("fill", layer => colors[layer.key] )
-            div.transition()
-                    .duration('50')
-                    .style("opacity", 0);
             setView({})
                     
         })
-
-
         
     }, [colors, data, dimensions, keys]);
 
